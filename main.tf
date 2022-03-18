@@ -14,22 +14,6 @@ resource "aws_instance" "dev" {
   vpc_security_group_ids = ["${aws_security_group.acesso-ssh.id}"]
 }
 
-resource "aws_security_group" "acesso-ssh" {
-  name        = "acesso-ssh"
-  description = "acesso-ssh"
-
-  ingress {
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-    cidr_blocks      = ["187.21.138.21/32"]
-  }
-
-  tags = {
-    Name = "ssh"
-  }
-}
-
 resource "aws_instance" "dev4" {
   ami           = "ami-0e472ba40eb589f49"
   instance_type = "t2.micro"
